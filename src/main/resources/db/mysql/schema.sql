@@ -1,12 +1,36 @@
-CREATE DATABASE IF NOT EXISTS petclinic;
+CREATE DATABASE IF NOT EXISTS kaloreaper;
 
-ALTER DATABASE petclinic
+ALTER DATABASE kaloreaper
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
-GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
+GRANT ALL PRIVILEGES ON kaloreaper.* TO pc@localhost IDENTIFIED BY 'pc';
 
-USE petclinic;
+USE kaloreaper;
+
+CREATE TABLE IF NOT EXISTS product_category (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80),
+  INDEX(name)
+) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS product (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(80),
+  calories FLOAT,
+  proteins FLOAT,
+  fats FLOAT,
+  carbonhydrates FLOAT,
+  product_category_id INT(4) UNSIGNED NOT NULL,
+  INDEX(name),
+  FOREIGN KEY (product_category_id) REFERENCES product_category(id)
+) engine=InnoDB;
+
+
+
+
+
+
 
 CREATE TABLE IF NOT EXISTS vets (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'products')}">
+
+<body>
+
+
+<h2>Informacje o produkcie</h2>
+
+
+<table class="table table-striped" th:object="${product}">
+    <tr>
+        <th>Nazwa</th>
+        <td th:text="*{name}"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Kategoria</th>
+        <td th:text="*{category}"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Kalorie</th>
+        <td th:text="*{calories}"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Białko</th>
+        <td th:text="*{proteins}"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Węglowodany</th>
+        <td th:text="*{carbonhydrates}"/>
+        </td>
+    </tr>
+    <tr>
+        <th>Tłuszcze</th>
+        <td th:text="*{fats}"/>
+        </td>
+    </tr>
+</table>
+
+
+<a th:href="@{{id}/edit(id=${product.id})}" class="btn btn-default">Edytuj</a>
+<a th:href="@{/products/new}" class="btn btn-default">Dodaj nowy</a>
+
+</body>
+
+</html>
