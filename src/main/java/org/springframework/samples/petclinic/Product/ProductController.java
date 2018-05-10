@@ -34,6 +34,7 @@ class ProductController {
         dataBinder.setDisallowedFields("id");
     }
 
+
     @GetMapping("/products/new")
     public String initCreationForm(Map<String, Object> model) {
         Product product = new Product();
@@ -48,6 +49,38 @@ class ProductController {
         } else {
             this.products.save(product);
             return "redirect:/products/" + product.getId();
+        }
+    }
+
+    @GetMapping("/products/find")
+    public String initFindForm(Map<String, Object> model) {
+        model.put("product", new Product());
+        return "products/findProducts";
+    }
+
+    @GetMapping("/products")
+    public String processFindForm(Product product, BindingResult result, Map<String, Object> model) {
+
+        // allow parameterless GET request for /product to return all records
+        if (product.getName() == null) {
+            product.setName(""); // empty string signifies broadest possible search
+        }
+
+        // find owners by last name
+        Collection<Product> results = this.products.findByName(product.getName());
+        System.out.println("============" + results);
+        if (results.isEmpty()) {
+            // no product found
+            result.rejectValue("name", "notFound", "not found");
+            return "products/findProducts";
+        } else if (results.size() == 1) {
+            // 1 product found
+            product = results.iterator().next();
+            return "redirect:/products/" + product.getId();
+        } else {
+            // multiple owners found
+            model.put("selections", results);
+            return "products/productsList";
         }
     }
 

@@ -18,18 +18,20 @@ package org.springframework.samples.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * PetClinic Spring Boot Application.
- * 
+ *
  * @author Dave Syer
  *
  */
 @SpringBootApplication
-public class PetClinicApplication {
+@EnableCaching
+public class KaloreaperApplication {
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(PetClinicApplication.class, args);
+        SpringApplication.run(KaloreaperApplication.class, args);
     }
 
 }

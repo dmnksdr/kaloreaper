@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'products')}">
 
   <body>
 
@@ -9,22 +9,24 @@
     <table id="vets" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Name</th>
-            <th style="width: 200px;">Address</th>
-            <th>City</th>
-            <th style="width: 120px">Telephone</th>
-            <th>Pets</th>
+            <th>Nazwa</th>
+            <th>Kategoria</th>
+            <th>Kalorie</th>
+            <th>Białko</th>
+            <th>Tłuszcz</th>
+            <th>Węglowodany</th>
         </tr>
         </thead>
         <tbody>
-          <tr th:each="owner : ${selections}">
+          <tr th:each="product : ${selections}">
               <td>
-                  <a th:href="@{/owners/__${owner.id}__}" th:text="${owner.firstName + ' ' + owner.lastName}"/></a>
+                  <a th:href="@{/products/__${product.id}__}" th:text="${product.name}"/></a>
               </td>
-              <td th:text="${owner.address}"/>
-              <td th:text="${owner.city}"/>
-              <td th:text="${owner.telephone}"/>
-              <td><span th:each="pet : ${owner.pets}" th:text="${pet.name} "/></td>
+              <td th:text="${product.category}"/>
+              <td th:text="${product.calories}"/>
+              <td th:text="${product.proteins}"/>
+              <td th:text="${product.fats}"/>
+              <td th:text="${product.carbonhydrates}"/>
           </tr>
         </tbody>
     </table>
