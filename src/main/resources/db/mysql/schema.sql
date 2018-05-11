@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS product (
 
 CREATE TABLE IF NOT EXISTS user_table (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  login VARCHAR (80),
-  name VARCHAR (80),
-  surname VARCHAR (80),
+  name VARCHAR (80) NOT NULL,
+  first_name VARCHAR (80),
+  last_name VARCHAR (80),
   age INT,
   weight FLOAT,
   height INT,
@@ -53,7 +53,8 @@ CREATE TABLE IF NOT EXISTS password (
 CREATE TABLE IF NOT EXISTS meal_diary (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   date DATE,
-  user_id INT(4) UNSIGNED NOT NULL,
+  user_id INT(4) UNSIGNED,
+--   user_id INT(4) UNSIGNED NOT NULL,
   INDEX(date),
   FOREIGN KEY (user_id) REFERENCES user_table(id)
 )engine=InnoDB;
@@ -61,18 +62,30 @@ CREATE TABLE IF NOT EXISTS meal_diary (
 CREATE TABLE IF NOT EXISTS meal (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(80),
-  user_id INT(4) UNSIGNED NOT NULL,
+  user_id INT(4) UNSIGNED,
+--   user_id INT(4) UNSIGNED NOT NULL,
   INDEX(name),
   FOREIGN KEY (user_id) REFERENCES user_table(id)
 )engine=InnoDB;
 
-CREATE TABLE IF NOT EXISTS meal_diary_meal (
+CREATE TABLE IF NOT EXISTS products_in_meal (
   meal_id INT(4) UNSIGNED NOT NULL,
   product_id INT(4) UNSIGNED NOT NULL,
-  PRIMARY KEY (meal_id, product_id),
+  quantity FLOAT NOT NULL,
   FOREIGN KEY (meal_id) REFERENCES meal(id),
-  FOREIGN KEY (product_id) REFERENCES product(id)
+  FOREIGN KEY (product_id) REFERENCES product(id),
+  UNIQUE (meal_id,product_id)
 )engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS meals_in_meal_diary (
+  meal_diary_id INT(4) UNSIGNED NOT NULL,
+  meal_id INT(4) UNSIGNED NOT NULL,
+  FOREIGN KEY (meal_diary_id) REFERENCES meal_diary(id),
+  FOREIGN KEY (meal_id) REFERENCES meal(id),
+  UNIQUE (meal_diary_id,meal_id)
+)engine=InnoDB;
+
+
 
 
 

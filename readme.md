@@ -1,120 +1,53 @@
-# Spring PetClinic Sample Application [![Build Status](https://travis-ci.org/spring-projects/spring-petclinic.png?branch=master)](https://travis-ci.org/spring-projects/spring-petclinic/)
-
-## Understanding the Spring Petclinic application with a few diagrams
-<a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
-
-## Running petclinic locally
-```
-	git clone https://github.com/spring-projects/spring-petclinic.git
-	cd spring-petclinic
-	./mvnw spring-boot:run
-```
-
-You can then access petclinic here: http://localhost:8080/
-
-<img width="1042" alt="petclinic-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
-
-## In case you find a bug/suggested improvement for Spring Petclinic
-Our issue tracker is available here: https://github.com/spring-projects/spring-petclinic/issues
+##1.Wstęp 
+W tym dokumencie zawarto podstawowe informacje dotyczące Doradcy Żywieniowego, jego założenia, wymagania oraz sposób użycia.
 
 
-## Database configuration
+##2. Opis problemu
+**Problem:** Prowadzenie dziennika spożytych posiłków oraz monitorowanie ich kaloryczności i zgodności ze stosowaną dietą jest czynnością żmudną i bardzo powtarzalną. Ponadto dobór posiłków pod względem dostarczanych makroskładników: białek, węglowodanów i tłuszczy wymaga sporej wiedzy i śledzenia odpowiednich tabel. 
+Czynności te nastręczają wiele trudności i wymagają włożenia sporej ilości czasu (zapisywanie, podliczanie kalorii, sprawdzanie kaloryczności konkretnego dania). 
 
-In its default configuration, Petclinic uses an in-memory database (HSQLDB) which
-gets populated at startup with data. A similar setup is provided for MySql in case a persistent database configuration is needed.
-Note that whenever the database type is changed, the data-access.properties file needs to be updated and the mysql-connector-java artifact from the pom.xml needs to be uncommented.
-
-You could start a MySql database with docker:
-
-```
-docker run -e MYSQL_ROOT_PASSWORD=petclinic -e MYSQL_DATABASE=petclinic -p 3306:3306 mysql:5.7.8
-```
-
-## Working with Petclinic in Eclipse/STS
-
-### prerequisites
-The following items should be installed in your system:
-* Apache Maven (https://maven.apache.org/install.html)
-* git command line tool (https://help.github.com/articles/set-up-git)
-* Eclipse with the m2e plugin (m2e is installed by default when using the STS (http://www.springsource.org/sts) distribution of Eclipse)
-
-Note: when m2e is available, there is an m2 icon in Help -> About dialog.
-If m2e is not there, just follow the install process here: http://www.eclipse.org/m2e/m2e-downloads.html
+**Rozwiązanie:** Stworzenie systemu ułatwiającego i pewnym stopniu automatyzującego wyżej wspomniane czynności. System pozwalałby na automatyczną kalkulację kaloryczności oraz zawartości makroskładników na podstawie wprowadzonych posiłków oraz ich porównanie z założeniami.
 
 
-### Steps:
+##3. Warunki graniczne.
+Warunki graniczne zostaną przedstawione z wykorzystaniem techniki MoSCoW. 
+Must opisuje wymaganie, które musi być spełnione w końcowym, finalnym rozwiązaniu. Should reprezentuje pozycję o wysokim priorytecie, która powinna być zawarta w rozwiązaniu, jeżeli jest to możliwe. Could opisuje wymaganie, które jest postrzegane jako pożądane, ale niekonieczne. Zostanie ono zawarte, jeżeli pozwolą na to czas i zasoby. Won’t reprezentuje wymaganie, które – za zgodą interesariuszy – nie będzie implementowane w danym wydaniu, ale może być rozpatrzone w przyszłości.
 
-1) In the command line
-```
-git clone https://github.com/spring-projects/spring-petclinic.git
-```
-2) Inside Eclipse
-```
-File -> Import -> Maven -> Existing Maven project
-```
+`Must have`
+- [ ] Użytkownik będzie miał możliwość stworzenia swojego osobistego konta, na które będzie mógł zalogować się poprzez przeglądarkę z dowolnego miejsca.
+- [ ] System będzie dysponował bazą produktów spożywczych wraz z danymi o ich kaloryczności oraz zawartości makroskładników
+- [ ] System będzie umożliwiał prowadzenie dziennika posiłków, czyli zestawienia produktów wraz z ich wagami na podstawie których obliczone zostaną spożyte: kalorie, białka, tłuszcze oraz węglowodany.
+- [ ] Powyższe dane (zapotrzebowanie oraz aktualne spożycie) będą wyświetlane w przejrzystej formie na głównym panelu aplikacji tak, aby użytkownik po szybkiej ich ocenie mógł stwierdzić czy osiągnął swój dzienny cel.
+- [ ] System będzie umożliwiał generowanie okresowych podsumowań zawierających wykresy spożycia kalorii i poszczególnych makroelementów. Na wykres można także nanieść informację czy wynik z danego dnia mieścił się w założonym limicie.
 
+`Should have`
+- [ ] Dodatkowym ułatwieniem będzie możliwość tworzenia predefiniowanych posiłków, które będą przechowywane w bazie danych i będą dostępne tylko dla użytkownika który je stworzył. Przy uzupełnianiu dziennika posiłków, zamiast dodawania poszczególnych produktów, będzie możliwość dodania gotowego posiłku.
+- [ ] Dodawanie przez użytkownika własnych produktów wraz z zawartością makroelementów oraz kalorycznością. Dane te powinny być przechowywane w osobnej tabeli właściwej dla konkretnego użytkownika.
 
-## Looking for something in particular?
+`Could have`
+- [ ] Użytkownik będzie mógł przystąpić do ankiety na podstawie której dobrane zostaną dla niego parametry diety takie jak dzienne zapotrzebowanie kaloryczne oraz zapotrzebowanie na makroskładniki.
 
-|Spring Boot Configuration | Class or Java property files  |
-|--------------------------|---|
-|The Main Class | [PetClinicApplication](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/PetClinicApplication.java) |
-|Properties Files | [application.properties](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/resources) |
-|Caching | [CacheConfig](https://github.com/spring-projects/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/system/CacheConfig.java) |
-
-## Interesting Spring Petclinic branches and forks
-
-The Spring Petclinic master branch in the main
-[spring-projects](https://github.com/spring-projects/spring-petclinic)
-GitHub org is the "canonical" implementation, currently based on
-Spring Boot and Thymeleaf. There are quite a few forks in a special
-GitHub org [spring-petclinic](https://github.com/spring-petclinic). If
-you have a special interest in a different technology stack that could
-be used to implement the Pet Clinic then please join the community
-there.
-
-| Link                               | Main technologies |
-|------------------------------------|-------------------|
-| [spring-framework-petclinic][]     | Spring Framework XML configuration, JSP pages, 3 persistence layers: JDBC, JPA and Spring Data JPA |
-| [javaconfig branch][]              | Same frameworks as the [spring-framework-petclinic][] but with Java Configuration instead of XML |
-| [spring-petclinic-angularjs][]     | AngularJS 1.x, Spring Boot and Spring Data JPA |
-| [spring-petclinic-angular][]       | Angular 4 front-end of the Petclinic REST API [spring-petclinic-rest][] |
-| [spring-petclinic-microservices][] | Distributed version of Spring Petclinic built with Spring Cloud |
-| [spring-petclinic-reactjs][]       | ReactJS (with TypeScript) and Spring Boot |
-| [spring-petclinic-graphql][]       | GraphQL version based on React Appolo, TypeScript and GraphQL Spring boot starter |
-| [spring-petclinic-kotlin][]        | Kotlin version of [spring-petclinic][] |
-| [spring-petclinic-rest][]          | Backend REST API |
+`Won’t have`
+- [ ] Użytkownik będzie mógł zalogować się do systemu za pomocą dedykowanej aplikacji mobilnej na system Android oraz iOS.
+- [ ] Użytkownik będzie miał możliwość wykupienia konta premium, które będzie pozwalać na uzyskanie personalnej porady dietetycznej i ułożenia diety. Wymagałoby to korzystania z usług wykwalifikowanego dietetyka.
 
 
-## Interaction with other open source projects
 
-One of the best parts about working on the Spring Petclinic application is that we have the opportunity to work in direct contact with many Open Source projects. We found some bugs/suggested improvements on various topics such as Spring, Spring Data, Bean Validation and even Eclipse! In many cases, they've been fixed/implemented in just a few days.
-Here is a list of them:
-
-| Name | Issue |
-|------|-------|
-| Spring JDBC: simplify usage of NamedParameterJdbcTemplate | [SPR-10256](https://jira.springsource.org/browse/SPR-10256) and [SPR-10257](https://jira.springsource.org/browse/SPR-10257) |
-| Bean Validation / Hibernate Validator: simplify Maven dependencies and backward compatibility |[HV-790](https://hibernate.atlassian.net/browse/HV-790) and [HV-792](https://hibernate.atlassian.net/browse/HV-792) |
-| Spring Data: provide more flexibility when working with JPQL queries | [DATAJPA-292](https://jira.springsource.org/browse/DATAJPA-292) |
-
-
-# Contributing
-
-The [issue tracker](https://github.com/spring-projects/spring-petclinic/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
-
-For pull requests, editor preferences are available in the [editor config](.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>. If you have not previously done so, please fill out and submit the https://cla.pivotal.io/sign/spring[Contributor License Agreement].
-
-# License
-
-The Spring PetClinic sample application is released under version 2.0 of the [Apache License](http://www.apache.org/licenses/LICENSE-2.0).
-
-[spring-petclinic]: https://github.com/spring-projects/spring-petclinic
-[spring-framework-petclinic]: https://github.com/spring-petclinic/spring-framework-petclinic
-[spring-petclinic-angularjs]: https://github.com/spring-petclinic/spring-petclinic-angularjs 
-[javaconfig branch]: https://github.com/spring-petclinic/spring-framework-petclinic/tree/javaconfig
-[spring-petclinic-angular]: https://github.com/spring-petclinic/spring-petclinic-angular
-[spring-petclinic-microservices]: https://github.com/spring-petclinic/spring-petclinic-microservices
-[spring-petclinic-reactjs]: https://github.com/spring-petclinic/spring-petclinic-reactjs
-[spring-petclinic-graphql]: https://github.com/spring-petclinic/spring-petclinic-graphql
-[spring-petclinic-kotlin]: https://github.com/spring-petclinic/spring-petclinic-kotlin
-[spring-petclinic-rest]: https://github.com/spring-petclinic/spring-petclinic-rest
+##4. Opis użytkownika i zewnętrznych podsystemów
+W podstawowej wersji system będzie posiadał dwóch użytkowników:
+1. Administrator 
+- Zarządzanie kontami użytkowników
+- Zarządzanie i utrzymywanie(dodawanie, usuwanie, modyfikacja) bazy produktów
+- Utrzymywanie aplikacji
+2. Użytkownik 
+- Tworzenie prywatnego konta użytkownika i uzupełnienie go swoimi danymi
+- Wybranie celu diety - schudnięcie, przybranie masy mięśniowej, zdrowsze odżywianie
+- Prowadzenie dziennika zjedzonych posiłków
+- Komponowanie predefiniowanych posiłków, które później będą mogły być dodane do dziennika
+- Generowanie podsumowań
+- Podsystemy
+- Baza danych
+- Przechowywanie danych użytkowników
+- Przechowywanie danych o produktach
+- Przechowywanie danych o posiłkach
+- Przechowywanie dzienników posiłków

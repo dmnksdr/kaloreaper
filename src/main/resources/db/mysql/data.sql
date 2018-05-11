@@ -10,7 +10,6 @@ INSERT INTO product_category VALUES (9, 'Napoje');
 INSERT INTO product_category VALUES (10, 'Dania gotowe');
 INSERT INTO product_category VALUES (11, 'Inne');
 
-
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Actimel, mleko jogurtowe", 88, 2.7, 1.5, 16.0);
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Advokat, likier", 280, 4.4, 6.0, 26.4);
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Agrest", 60, 1.2, 0.9, 11.8);
@@ -785,3 +784,17 @@ INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żeberk
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żółtko jaja kurzego", 314, 15.5, 28.2, 0.3);
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żurawiny", 51, 0.4, 0.1, 19.9);
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żurek", 124, 2.2, 3.1, 23.5);
+
+
+
+
+
+
+
+INSERT INTO user_table(name) VALUES('root');
+INSERT INTO meal(name, user_id) VALUES('Obiad', 1);
+INSERT INTO products_in_meal(meal_id, product_id, quantity) VALUES(1, 339, 150);
+INSERT INTO products_in_meal(meal_id, product_id, quantity) VALUES(1, 555, 100);
+INSERT INTO products_in_meal(meal_id, product_id, quantity) VALUES(1, 636, 50);
+
+
