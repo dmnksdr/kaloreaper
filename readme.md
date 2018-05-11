@@ -1,15 +1,15 @@
-##1.Wstęp 
+## 1.Wstęp 
 W tym dokumencie zawarto podstawowe informacje dotyczące Doradcy Żywieniowego, jego założenia, wymagania oraz sposób użycia.
 
 
-##2. Opis problemu
+## 2. Opis problemu
 **Problem:** Prowadzenie dziennika spożytych posiłków oraz monitorowanie ich kaloryczności i zgodności ze stosowaną dietą jest czynnością żmudną i bardzo powtarzalną. Ponadto dobór posiłków pod względem dostarczanych makroskładników: białek, węglowodanów i tłuszczy wymaga sporej wiedzy i śledzenia odpowiednich tabel. 
 Czynności te nastręczają wiele trudności i wymagają włożenia sporej ilości czasu (zapisywanie, podliczanie kalorii, sprawdzanie kaloryczności konkretnego dania). 
 
 **Rozwiązanie:** Stworzenie systemu ułatwiającego i pewnym stopniu automatyzującego wyżej wspomniane czynności. System pozwalałby na automatyczną kalkulację kaloryczności oraz zawartości makroskładników na podstawie wprowadzonych posiłków oraz ich porównanie z założeniami.
 
 
-##3. Warunki graniczne.
+## 3. Warunki graniczne.
 Warunki graniczne zostaną przedstawione z wykorzystaniem techniki MoSCoW. 
 Must opisuje wymaganie, które musi być spełnione w końcowym, finalnym rozwiązaniu. Should reprezentuje pozycję o wysokim priorytecie, która powinna być zawarta w rozwiązaniu, jeżeli jest to możliwe. Could opisuje wymaganie, które jest postrzegane jako pożądane, ale niekonieczne. Zostanie ono zawarte, jeżeli pozwolą na to czas i zasoby. Won’t reprezentuje wymaganie, które – za zgodą interesariuszy – nie będzie implementowane w danym wydaniu, ale może być rozpatrzone w przyszłości.
 
@@ -33,7 +33,7 @@ Must opisuje wymaganie, które musi być spełnione w końcowym, finalnym rozwi�
 
 
 
-##4. Opis użytkownika i zewnętrznych podsystemów
+## 4. Opis użytkownika i zewnętrznych podsystemów
 W podstawowej wersji system będzie posiadał dwóch użytkowników:
 1. Administrator 
 - Zarządzanie kontami użytkowników
