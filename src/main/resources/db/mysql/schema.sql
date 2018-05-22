@@ -1,11 +1,11 @@
-DROP DATABASE kaloreaper;
+-- DROP DATABASE kaloreaper;
 CREATE DATABASE IF NOT EXISTS kaloreaper;
 
 ALTER DATABASE kaloreaper
   DEFAULT CHARACTER SET utf8
-  DEFAULT COLLATE utf8_general_ci;
+  DEFAULT COLLATE utf8_polish_ci;
 
-GRANT ALL PRIVILEGES ON kaloreaper.* TO pc@localhost IDENTIFIED BY 'pc';
+-- GRANT ALL PRIVILEGES ON kaloreaper.* TO pc@localhost IDENTIFIED BY 'pc';
 
 USE kaloreaper;
 
@@ -69,12 +69,12 @@ CREATE TABLE IF NOT EXISTS meal (
 )engine=InnoDB;
 
 CREATE TABLE IF NOT EXISTS products_in_meal (
-  meal_id INT(4) UNSIGNED NOT NULL,
-  product_id INT(4) UNSIGNED NOT NULL,
+  fk_meal INT(4) UNSIGNED NOT NULL,
+  fk_product INT(4) UNSIGNED NOT NULL,
   quantity FLOAT NOT NULL,
-  FOREIGN KEY (meal_id) REFERENCES meal(id),
-  FOREIGN KEY (product_id) REFERENCES product(id),
-  UNIQUE (meal_id,product_id)
+  FOREIGN KEY (fk_meal) REFERENCES meal(id),
+  FOREIGN KEY (fk_product) REFERENCES product(id),
+  UNIQUE (fk_meal, fk_product)
 )engine=InnoDB;
 
 CREATE TABLE IF NOT EXISTS meals_in_meal_diary (
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS meals_in_meal_diary (
 
 
 
-
+/*
 CREATE TABLE IF NOT EXISTS vets (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30),
@@ -144,3 +144,5 @@ CREATE TABLE IF NOT EXISTS visits (
   description VARCHAR(255),
   FOREIGN KEY (pet_id) REFERENCES pets(id)
 ) engine=InnoDB;
+
+*/

@@ -1,4 +1,4 @@
-package edu.agh.kaloreaper.Product;
+package edu.agh.kaloreaper.product;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

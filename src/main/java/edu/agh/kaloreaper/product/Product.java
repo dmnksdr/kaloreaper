@@ -1,6 +1,6 @@
-package edu.agh.kaloreaper.Product;
+package edu.agh.kaloreaper.product;
 
-import edu.agh.kaloreaper.Meal.Meal;
+import edu.agh.kaloreaper.meal.ProductsInMeal;
 import edu.agh.kaloreaper.model.NamedEntity;
 
 import javax.persistence.*;
@@ -27,16 +27,28 @@ public class Product extends NamedEntity {
     @JoinColumn(name = "product_category_id")
     private ProductCategory category;
 
-    @ManyToMany(mappedBy = "products")
-    private Set<Meal> meals = new HashSet<>();
 
-    public Set<Meal> getMeals() {
+
+
+
+
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProductsInMeal> meals = new HashSet<>();
+
+    public Set<ProductsInMeal> getMeals() {
         return meals;
     }
 
-    public void setMeals(Set<Meal> meals) {
-        this.meals = meals;
+    public void setMeals(Set<ProductsInMeal> productsInMeal) {
+        this.meals = productsInMeal;
     }
+
+
+
+
+
+
 
     public Float getCalories() {
         return calories;

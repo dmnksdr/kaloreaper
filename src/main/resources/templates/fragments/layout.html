@@ -17,7 +17,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" th:href="@{/resources/css/petclinic.css}"/>
+    <link rel="stylesheet" th:href="@{/resources/css/kaloreaper.css}"/>
+
 
   </head>
 
@@ -49,7 +50,7 @@
                       <span>Dodaj posiłek</span>
                   </li>
 
-                  <li th:replace="::menuItem ('/meal/new','dodajPosilek','Dodaj posiłek do dziennika','plus','Dodaj posiłek')">
+                  <li th:replace="::menuItem ('/meals','dodajPosilek','Dodaj posiłek do dziennika','plus','Dodaj posiłek')">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                       <span>Dodaj posiłek</span>
                   </li>
@@ -75,20 +76,19 @@
 
         <br/>
         <br/>
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <img src="../static/resources/images/spring-pivotal-logo.png" th:src="@{/resources/images/spring-pivotal-logo.png}"
-                alt="Sponsored by Pivotal"/></div>
-          </div>
-        </div>
+        <!--<div class="container">-->
+          <!--<div class="row">-->
+            <!--<div class="col-12 text-center">-->
+              <!--<img src="../static/resources/images/spring-pivotal-logo.png" th:src="@{/resources/images/spring-pivotal-logo.png}"-->
+                <!--alt="Sponsored by Pivotal"/></div>-->
+          <!--</div>-->
+        <!--</div>-->
       </div>
   </div>
 
-  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
   <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-
 </body>
 
 </html>

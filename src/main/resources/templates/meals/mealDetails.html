@@ -18,25 +18,27 @@
         <th>Białko</th>
         <th>Tłuszcz</th>
         <th>Węglowodany</th>
+        <th>Waga</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="product : ${meal.products}">
         <td>
-            <a th:href="@{/products/__${product.id}__}" th:text="${product.name}"/></a>
+            <a th:href="@{/products/__${product.product.id}__}" th:text="${product.product.name}"/></a>
         </td>
-        <td th:text="${product.category}"/>
-        <td th:text="${product.calories}"/>
-        <td th:text="${product.proteins}"/>
-        <td th:text="${product.fats}"/>
-        <td th:text="${product.carbonhydrates}"/>
+        <td th:text="${product.product.category}"/>
+        <td th:text="${product.product.calories}"/>
+        <td th:text="${product.product.proteins}"/>
+        <td th:text="${product.product.fats}"/>
+        <td th:text="${product.product.carbonhydrates}"/>
+        <td th:text="${product.quantity}"/>
     </tr>
     </tbody>
 </table>
 
 
 <a th:href="@{{id}/edit(id=${meal.id})}" class="btn btn-default">Edytuj</a>
-<a th:href="@{/products/newProduct}" class="btn btn-default">Dodaj produkt</a>
+<a th:href="@{{id}/addProduct(id=${meal.id})}" class="btn btn-default">Dodaj produkt</a>
 
 </body>
 

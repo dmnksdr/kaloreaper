@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
+
+<body>
+
+
+<div th:each="meal : ${meals.mealList}">
+    <h1><span class="label label-default" th:text="${meal.name}"></span></h1>
+
+    <table th:id="'products_' + ${meal.id}" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Kalorie</th>
+            <th>Białko</th>
+            <th>Węglowodany</th>
+            <th>Tłuszcze</th>
+            <th>Waga</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="product : ${meal.products}">
+                <td th:text="${product.product.name}"></td>
+                <td th:text="${product.product.calories}"></td>
+                <td th:text="${product.product.proteins}"></td>
+                <td th:text="${product.product.carbonhydrates}"></td>
+                <td th:text="${product.product.fats}"></td>
+                <td th:text="${product.quantity}"></td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    <a th:href="@{meals/{id}/addProduct(id=${meal.id})}" class="btn btn-default btn-sm pull-right">Dodaj produkt</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<a th:href="@{meals/new}" class="btn btn-default">Dodaj posiłek</a>
+
+
+</body>
+</html>

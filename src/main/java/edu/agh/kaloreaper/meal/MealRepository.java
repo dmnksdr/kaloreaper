@@ -1,6 +1,6 @@
-package edu.agh.kaloreaper.Meal;
+package edu.agh.kaloreaper.meal;
 
-import edu.agh.kaloreaper.Product.Product;
+import edu.agh.kaloreaper.product.Product;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.jpa.repository.Query;
@@ -14,9 +14,9 @@ import java.util.List;
 
 public interface MealRepository extends Repository<Meal, Integer> {
 
-//    @Query("SELECT DISTINCT meal FROM Meal meal left join fetch meal.products left join fetch  WHERE product.name LIKE :name%")
+//    @Query("SELECT DISTINCT meal FROM meal meal left join fetch meal.products left join fetch  WHERE product.name LIKE :name%")
 //    @Transactional(readOnly = true)
-//    Collection<Meal> findByName(@Param("name") String name);
+//    Collection<meal> findByName(@Param("name") String name);
 
     @Query("SELECT product FROM Product product ORDER BY product.name")
     @Transactional(readOnly = true)
@@ -31,7 +31,7 @@ public interface MealRepository extends Repository<Meal, Integer> {
 
 
     @Transactional(readOnly = true)
-    @Cacheable("meal")
+//    @Cacheable("meal")
     Collection<Meal> findAll() throws DataAccessException;
 
 }

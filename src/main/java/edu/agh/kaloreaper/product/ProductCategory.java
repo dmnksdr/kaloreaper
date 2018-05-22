@@ -1,4 +1,4 @@
-package edu.agh.kaloreaper.Product;
+package edu.agh.kaloreaper.product;
 
 import edu.agh.kaloreaper.model.NamedEntity;
 

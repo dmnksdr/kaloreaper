@@ -1,8 +1,9 @@
-package edu.agh.kaloreaper.Meal;
+package edu.agh.kaloreaper.meal;
 
-import edu.agh.kaloreaper.Product.Product;
+import edu.agh.kaloreaper.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,7 @@ class MealController {
 
     @PostMapping("/meal/new")
     public String processCreationForm(@Valid Meal meal, BindingResult result) {
+        System.out.println("=============!!===" + meal.getName());
         if (result.hasErrors()) {
             return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
         } else {
@@ -54,7 +56,19 @@ class MealController {
     }
 
 
-    @GetMapping("/meals.html")
+
+    @PostMapping("/meal/ajax_new")
+    public String processAjaxCreationForm(Model model, @ModelAttribute(value="meal") @Valid Meal meal, BindingResult result) {
+        if (result.hasErrors()) {
+            return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
+        } else {
+            this.meals.save(meal);
+            return "redirect:/meals/" + meal.getId();
+        }
+    }
+
+
+    @GetMapping("/meals")
     public String showMealList(Map<String, Object> model) {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for Object-Xml mapping

@@ -1,4 +1,4 @@
-package edu.agh.kaloreaper.Product;
+package edu.agh.kaloreaper.product;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -17,7 +17,6 @@ public interface ProductRepository extends Repository<Product, Integer> {
     @Query("SELECT pcategory FROM ProductCategory pcategory ORDER BY pcategory.name")
     @Transactional(readOnly = true)
     List<ProductCategory> findProductCategories();
-
 
     @Query("SELECT product FROM Product product WHERE product.id =:id")
     @Transactional(readOnly = true)

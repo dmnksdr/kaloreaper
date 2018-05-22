@@ -1,3 +1,9 @@
+USE kaloreaper;
+
+ALTER DATABASE kaloreaper
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_polish_ci;
+
 INSERT INTO product_category VALUES (1, 'Pieczywo');
 INSERT INTO product_category VALUES (2, 'Nabiał');
 INSERT INTO product_category VALUES (3, 'Mięso');
@@ -9,6 +15,8 @@ INSERT INTO product_category VALUES (8, 'Słodycze');
 INSERT INTO product_category VALUES (9, 'Napoje');
 INSERT INTO product_category VALUES (10, 'Dania gotowe');
 INSERT INTO product_category VALUES (11, 'Inne');
+
+
 
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Actimel, mleko jogurtowe", 88, 2.7, 1.5, 16.0);
 INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Advokat, likier", 280, 4.4, 6.0, 26.4);
@@ -793,8 +801,8 @@ INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żurek"
 
 INSERT INTO user_table(name) VALUES('root');
 INSERT INTO meal(name, user_id) VALUES('Obiad', 1);
-INSERT INTO products_in_meal(meal_id, product_id, quantity) VALUES(1, 339, 150);
-INSERT INTO products_in_meal(meal_id, product_id, quantity) VALUES(1, 555, 100);
-INSERT INTO products_in_meal(meal_id, product_id, quantity) VALUES(1, 636, 50);
+INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 339, 150);
+INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 555, 100);
+INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 636, 50);
 
 

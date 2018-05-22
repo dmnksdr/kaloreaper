@@ -3,6 +3,83 @@
 
 <body>
 
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<a class="href-link" onclick="openModal();">Dodaj posiłek</a>
+
+
+
+<!-- INCLUDE YOUR OWN CSS CLASS -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="width: 450px;">
+            <div class="modal-header">
+                <label style="font-size: 1.5em;">Nowy posiłek</label>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form th:object="${meal}" class="form-horizontal" id="add-meal-form" method="post">
+                    <div class="form-group has-feedback" style="padding: 15px">
+                        <input th:replace="~{fragments/inputField :: input ('Nazwa', 'name', 'text')}"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button text="Dodaj posiłek" class="btn btn-default pull-right" type="submit">Dodaj Posiłek </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+//Modal trigger function.
+<script type="text/javascript">
+    function openModal() {
+        $('#exampleModal').modal('show');
+    }
+</script>
+
+
+
+
 <h2>Posiłki</h2>
 <form th:object="${meal}" class="form-horizontal" id="add-product-form" method="post">
     <div class="form-group has-feedback">
