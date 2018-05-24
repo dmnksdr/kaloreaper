@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "product")
-public class Product extends NamedEntity {
+public class Product extends NamedEntity implements Comparable<Product> {
 
     @Column(name = "calories")
     private Float calories;
@@ -88,5 +88,13 @@ public class Product extends NamedEntity {
 
     public void setCategory(ProductCategory category) {
         this.category = category;
+    }
+
+
+    @Override
+    public int compareTo(Product o) {
+        Integer thisId = this.getId();
+        Integer oId = o.getId();
+        return thisId.compareTo(oId);
     }
 }

@@ -8,7 +8,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "meal")
-public class Meal extends NamedEntity {
+public class Meal extends NamedEntity implements Comparable<Meal>{
 
     @OneToMany(mappedBy = "meal")
     private Set<ProductsInMeal> products;
@@ -24,5 +24,13 @@ public class Meal extends NamedEntity {
 
     public int getNrOfProducts() {
         return getProducts().size();
+    }
+
+
+    @Override
+    public int compareTo(Meal o) {
+        Integer thisId = this.getId();
+        Integer oId = o.getId();
+        return thisId.compareTo(oId);
     }
 }

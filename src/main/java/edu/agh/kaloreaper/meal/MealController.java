@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 class MealController {
@@ -35,14 +33,14 @@ class MealController {
         dataBinder.setDisallowedFields("id");
     }
 
-    @GetMapping("/meal/new")
-    public String initCreationForm(Map<String, Object> model) {
-        Meal meal = new Meal();
-        model.put("meal", meal);
-        List<Product> productList = this.meals.findProducts();
-        model.put("productList", productList);
-        return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
-    }
+//    @GetMapping("/meal/new")
+//    public String initCreationForm(Map<String, Object> model) {
+//        Meal meal = new Meal();
+//        model.put("meal", meal);
+//        List<Product> productList = this.meals.findProducts();
+//        model.put("productList", productList);
+//        return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
+//    }
 
     @PostMapping("/meal/new")
     public String processCreationForm(@Valid Meal meal, BindingResult result) {
@@ -51,32 +49,36 @@ class MealController {
             return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
         } else {
             this.meals.save(meal);
-            return "redirect:/meals/" + meal.getId();
+            return "redirect:/meals";
         }
     }
 
 
 
-    @PostMapping("/meal/ajax_new")
-    public String processAjaxCreationForm(Model model, @ModelAttribute(value="meal") @Valid Meal meal, BindingResult result) {
-        if (result.hasErrors()) {
-            return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
-        } else {
-            this.meals.save(meal);
-            return "redirect:/meals/" + meal.getId();
-        }
-    }
+//    @PostMapping("/meal/ajax_new")
+//    public String processAjaxCreationForm(Model model, @ModelAttribute(value="meal") @Valid Meal meal, BindingResult result) {
+//        if (result.hasErrors()) {
+//            return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
+//        } else {
+//            this.meals.save(meal);
+//            return "redirect:/meals/" + meal.getId();
+//        }
+//    }
 
 
     @GetMapping("/meals")
     public String showMealList(Map<String, Object> model) {
-        // Here we are returning an object of type 'Vets' rather than a collection of Vet
-        // objects so it is simpler for Object-Xml mapping
-        Meals meals = new Meals();
-        meals.getMealList().addAll(this.meals.findAll());
-        model.put("meals", meals);
+        Meal meal = new Meal();
+//        Meals meals = new Meals();
+//        meals.getMealList().addAll(this.meals.findAll());
+        List<Meal> sortedList = new ArrayList<>();
+        sortedList.addAll(this.meals.findAll());
+        Collections.sort(sortedList);
+        model.put("meals", sortedList);
+        model.put("meal", meal);
         return "meals/mealList";
     }
+
 
     @GetMapping({ "/meals.json", "/meals.xml" })
     public @ResponseBody Meals showResourcesMealList() {
