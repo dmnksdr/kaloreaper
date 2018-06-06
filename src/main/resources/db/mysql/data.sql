@@ -799,10 +799,28 @@ INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żurek"
 
 
 
-INSERT INTO user_table(name) VALUES('root');
-INSERT INTO meal(name, user_id, date) VALUES('Obiad', 1, '2018-06-06');
-INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 339, 150);
-INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 555, 100);
-INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 636, 50);
+INSERT INTO user_table(id, name) VALUES(1, 'root');
+INSERT INTO user_table (name, first_name, last_name, year_of_birth, weight, height, calories_demand, proteins_demand, carbohydrates_demand, fats_demnad) VALUES ( 'dmnk', 'Dominik', 'Sdr', '1990', '75', '182', '2500', '120', '100', '80');
+INSERT INTO user_table (name, first_name, last_name, year_of_birth, weight, height, calories_demand, proteins_demand, carbohydrates_demand, fats_demnad) VALUES ( 'art', 'Artur', 'Majdak', '1990', '75', '182', '2500', '120', '100', '80');
 
 
+INSERT INTO meal(name, user_id, date) VALUES('Śniadanie', 2, '2018-06-06');
+INSERT INTO meal(name, user_id, date) VALUES('II śniadanie', 2, '2018-06-06');
+INSERT INTO meal(name, user_id, date) VALUES('Obiad', 2, '2018-06-06');
+INSERT INTO meal(name, user_id, date) VALUES('Podwieczorek', 2, '2018-06-06');
+INSERT INTO meal(name, user_id, date) VALUES('Kolacja', 2, '2018-06-06');
+
+INSERT INTO products_in_meal (fk_meal, fk_product, quantity) VALUES
+(1, 87, 80),
+(1, 394, 5),
+(1, 424, 200),
+(1, 659, 60),
+(2, 60, 50),
+(2, 568, 150),
+(3, 324, 200),
+(3, 636, 90),
+(3, 745, 110),
+(4, 160, 80),
+(5, 530, 60),
+(5, 593, 80),
+(5, 703, 40);

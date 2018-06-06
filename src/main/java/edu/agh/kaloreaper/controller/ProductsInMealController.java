@@ -71,7 +71,7 @@ class ProductsInMealController {
         if (results.isEmpty()) {
             // no product found
             result.rejectValue("name", "notFound", "not found");
-            return "products/findProducts";
+            return "meals/findProductsToAdd";
         } else {
             // multiple owners found
             model.put("selections", results);

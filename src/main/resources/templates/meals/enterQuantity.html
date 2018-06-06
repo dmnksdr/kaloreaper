@@ -6,16 +6,13 @@
 
 
 
-    <span th:text="${productsInMeal.getProduct()}"/>
-    <span th:text="${productsInMeal.getMeal()}"/>
-
 <form th:action="@{/meals/newProductInMeal/__${productsInMeal.meal.id}__/__${productsInMeal.product.id}__}" th:object="${productsInMeal}" class="form-horizontal" id="add-meal-form" method="post">
     <div class="form-group has-feedback" style="padding: 15px">
-        <input th:replace="~{fragments/inputField :: input ('Ilosc', 'quantity', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Ilość', 'quantity', 'text')}"/>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button text="Dodaj posiłek" class="btn btn-default pull-right" type="submit">Dodaj Posiłek </button>
+            <button text="Dodaj posiłek" class="btn btn-default btn-sm pull-right" type="submit">Dodaj produkt </button>
         </div>
     </div>
 </form>
