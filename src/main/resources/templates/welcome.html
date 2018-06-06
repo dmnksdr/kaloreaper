@@ -1,15 +1,71 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>-->
 
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+<!--<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">-->
+
+<!--<body>-->
+
+<!--<br><br><br>-->
+<!--<div class="row text-center">-->
+<!--<h2>Witaj na stronie Kaloreaper</h2> <br>-->
+<!--<h3>Zaloguj się aby kontynuować</h3> <br>-->
+<!--<div class="col-md-12">-->
+<!--<a th:href="@{/login}" class="btn btn-default">Zaloguj się</a>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!doctype html>
+<html th:fragment="layout (template, menu)">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon.png}">
+
+    <title>KaloREAPER</title>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" th:href="@{/resources/css/kaloreaper.css}"/>
+
+
+</head>
 
 <body>
 
-<h2 th:text="#{welcome}">Kaloreaper</h2>
-<div class="row">
-    <div class="col-md-12">
-        <br><br>
-        <a th:href="@{/products/new}" class="btn btn-default">Dodaj nowy produkt</a>
-        <a th:href="@{/products/find}" class="btn btn-default">Szukaj produktu</a>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}"><span></span></a>
+        </div>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container xd-container">
+
+        <br><br><br>
+
+        <div class="row text-center">
+            <h2>Witaj na stronie Kaloreaper</h2> <br>
+            <h3>Zaloguj się aby kontynuować</h3> <br>
+            <div class="col-md-12">
+                <a th:href="@{/login}" class="btn btn-default">Zaloguj się</a>
+            </div>
+        </div>
+
+
     </div>
 </div>
 

@@ -28,12 +28,12 @@
       <div class="container">
           <div class="navbar-header">
               <a class="navbar-brand" th:href="@{/}"><span></span></a>
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-                  <span class="sr-only"><os-p>Toggle navigation</os-p></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
+              <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">-->
+                  <!--<span class="sr-only"><os-p>Toggle navigation</os-p></span>-->
+                  <!--<span class="icon-bar"></span>-->
+                  <!--<span class="icon-bar"></span>-->
+                  <!--<span class="icon-bar"></span>-->
+              <!--</button>-->
           </div>
           <div class="navbar-collapse collapse" id="main-navbar">
               <ul class="nav navbar-nav navbar-right">
@@ -50,17 +50,17 @@
                       <span>Dodaj posiłek</span>
                   </li>
 
-                  <li th:replace="::menuItem ('/meals','dodajPosilek','Dodaj posiłek do dziennika','plus','Dodaj posiłek')">
+                  <li th:replace="::menuItem ('/meals','meals','Dodaj posiłek do dziennika','plus','Dodaj posiłek')">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                       <span>Dodaj posiłek</span>
                   </li>
 
-                  <li th:replace="::menuItem ('/history/main','owners','Statystyki posiłków','cutlery','Historia')">
+                  <li th:replace="::menuItem ('/history','history','Statystyki posiłków','cutlery','Historia')">
                       <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
                       <span>Historia</span>
                   </li>
 
-                  <li th:replace="::menuItem ('/preferences.html','vets','Ustawienia użytkownika','cog','Ustawienia')">
+                  <li th:replace="::menuItem ('/settings','settings','Ustawienia użytkownika','cog','Ustawienia')">
                       <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                       <span>Ustawienia</span>
                   </li>

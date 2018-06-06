@@ -800,7 +800,7 @@ INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żurek"
 
 
 INSERT INTO user_table(name) VALUES('root');
-INSERT INTO meal(name, user_id) VALUES('Obiad', 1);
+INSERT INTO meal(name, user_id, date) VALUES('Obiad', 1, '2018-06-06');
 INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 339, 150);
 INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 555, 100);
 INSERT INTO products_in_meal(fk_meal, fk_product, quantity) VALUES(1, 636, 50);

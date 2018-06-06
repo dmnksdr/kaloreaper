@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'products')}">
+
+<body>
+
+<h2>Znalezione produkty</h2>
+
+<table id="products" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Nazwa</th>
+        <th>Kategoria</th>
+        <th>Kalorie</th>
+        <th>Białko</th>
+        <th>Tłuszcz</th>
+        <th>Węglowodany</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${selections}">
+        <td>
+            <a th:href="@{foundProduct/__${product.id}__}" th:text="${product.name}"/></a>
+        </td>
+        <td th:text="${product.category}"/>
+        <td th:text="${product.calories}"/>
+        <td th:text="${product.proteins}"/>
+        <td th:text="${product.fats}"/>
+        <td th:text="${product.carbonhydrates}"/>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

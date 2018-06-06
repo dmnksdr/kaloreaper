@@ -1,14 +1,25 @@
 package edu.agh.kaloreaper.meal;
 
 import edu.agh.kaloreaper.model.NamedEntity;
+import edu.agh.kaloreaper.model.User;
+import edu.agh.kaloreaper.product.ProductCategory;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.*;
 
 
 @Entity
 @Table(name = "meal")
-public class Meal extends NamedEntity implements Comparable<Meal>{
+public class Meal extends NamedEntity implements Comparable<Meal> {
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Column(name = "date")
+    private java.sql.Date date;
+
 
     @OneToMany(mappedBy = "meal")
     private Set<ProductsInMeal> products;
@@ -21,9 +32,24 @@ public class Meal extends NamedEntity implements Comparable<Meal>{
         this.products = productsInMeal;
     }
 
-
     public int getNrOfProducts() {
         return getProducts().size();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 

@@ -1,6 +1,7 @@
 package edu.agh.kaloreaper.product;
 
 
+import edu.agh.kaloreaper.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;

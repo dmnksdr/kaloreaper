@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout (~{::body},'meals')}">
+      th:replace="~{fragments/layout :: layout (~{::body},'history')}">
 
 <body>
 
 
 <div th:each="meal : ${meals}">
-    <h1><span class="label label-default" th:text="${meal.name}"></span></h1>
-
+    <h2><span class="label label-default" th:text="${meal.date}"></span>   <span class="label label-default" th:text="${meal.name}"></span></h2>
     <table th:id="'products_' + ${meal.id}" class="table table-striped">
         <thead>
         <tr>
@@ -29,11 +28,6 @@
                 <td th:text="${product.product.carbonhydrates}"></td>
                 <td th:text="${product.product.fats}"></td>
                 <td th:text="${product.quantity}"></td>
-            </tr>
-            <tr>
-                <td colspan="6">
-                    <a th:href="@{meals/{id}/findProduct(id=${meal.id})}" class="btn btn-default btn-sm pull-right">Dodaj produkt</a>
-                </td>
             </tr>
         </tbody>
     </table>

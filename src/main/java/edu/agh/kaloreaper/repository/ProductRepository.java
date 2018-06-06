@@ -1,5 +1,7 @@
-package edu.agh.kaloreaper.product;
+package edu.agh.kaloreaper.repository;
 
+import edu.agh.kaloreaper.product.Product;
+import edu.agh.kaloreaper.product.ProductCategory;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;

@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS user_table (
   name VARCHAR (80) NOT NULL,
   first_name VARCHAR (80),
   last_name VARCHAR (80),
-  age INT,
+  year_of_birth INT,
   weight FLOAT,
   height INT,
   calories_demand INT,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS meal (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(80),
   user_id INT(4) UNSIGNED,
---   user_id INT(4) UNSIGNED NOT NULL,
+  date date,
   INDEX(name),
   FOREIGN KEY (user_id) REFERENCES user_table(id)
 )engine=InnoDB;

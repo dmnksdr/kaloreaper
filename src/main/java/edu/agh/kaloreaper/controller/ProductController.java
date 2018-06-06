@@ -1,6 +1,9 @@
-package edu.agh.kaloreaper.product;
+package edu.agh.kaloreaper.controller;
 
 
+import edu.agh.kaloreaper.product.Product;
+import edu.agh.kaloreaper.product.ProductCategory;
+import edu.agh.kaloreaper.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

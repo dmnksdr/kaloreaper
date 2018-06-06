@@ -1,27 +1,39 @@
-package edu.agh.kaloreaper.meal;
+package edu.agh.kaloreaper.controller;
 
+import edu.agh.kaloreaper.meal.Meal;
+import edu.agh.kaloreaper.meal.Meals;
+import edu.agh.kaloreaper.model.User;
+import edu.agh.kaloreaper.repository.MealRepository;
 import edu.agh.kaloreaper.product.Product;
+import edu.agh.kaloreaper.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.*;
 
 @Controller
 class MealController {
 
     private static final String VIEWS_MEAL_CREATE_OR_UPDATE_FORM = "meals/createOrUpdateMealForm";
-    private final MealRepository meals;
 
     @Autowired
-    public MealController(MealRepository mealRepository) {
-        this.meals = mealRepository;
-    }
+    private MealRepository meals;
+
+    @Autowired
+    private UserRepository users;
+
+//    @Autowired
+//    public MealController(MealRepository mealRepository) {
+//        this.meals = mealRepository;
+//    }
 
     @ModelAttribute("all_products")
     public Collection<Product> populateProducts() {
@@ -44,7 +56,10 @@ class MealController {
 
     @PostMapping("/meal/new")
     public String processCreationForm(@Valid Meal meal, BindingResult result) {
-        System.out.println("=============!!===" + meal.getName());
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = users.findByName(userName);
+        meal.setDate(new Date(System.currentTimeMillis()));
+        meal.setUser(user);
         if (result.hasErrors()) {
             return VIEWS_MEAL_CREATE_OR_UPDATE_FORM;
         } else {
@@ -72,7 +87,15 @@ class MealController {
 //        Meals meals = new Meals();
 //        meals.getMealList().addAll(this.meals.findAll());
         List<Meal> sortedList = new ArrayList<>();
-        sortedList.addAll(this.meals.findAll());
+//        sortedList.addAll(this.meals.findAll());
+
+        Date date = new Date(System.currentTimeMillis());
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = users.findByName(userName);
+
+
+        sortedList.addAll(this.meals.findByDateAndUser(date, user));
+
         Collections.sort(sortedList);
         model.put("meals", sortedList);
         model.put("meal", meal);
@@ -81,7 +104,8 @@ class MealController {
 
 
     @GetMapping({ "/meals.json", "/meals.xml" })
-    public @ResponseBody Meals showResourcesMealList() {
+    public @ResponseBody
+    Meals showResourcesMealList() {
         // Here we are returning an object of type 'Vets' rather than a collection of Vet
         // objects so it is simpler for JSon/Object mapping
         Meals meals = new Meals();

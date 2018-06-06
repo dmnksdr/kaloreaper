@@ -29,7 +29,9 @@ public class ProductsInMeal {
 
 
 
-    public ProductsInMeal() {}
+    public ProductsInMeal() {
+        this.id = new ProductsInMealId();
+    }
 
     // czy to jest potrzebne?
     public ProductsInMeal(Meal meal, Product product, Float quantity) {
@@ -59,6 +61,7 @@ public class ProductsInMeal {
 
     public void setMeal(Meal meal) {
         this.meal = meal;
+        this.id.mealId = meal.getId();
     }
 
     public Product getProduct() {
@@ -67,6 +70,7 @@ public class ProductsInMeal {
 
     public void setProduct(Product product) {
         this.product = product;
+        this.id.productId = product.getId();
     }
 
     public Float getQuantity() {
