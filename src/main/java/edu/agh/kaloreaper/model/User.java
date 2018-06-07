@@ -31,7 +31,7 @@ public class User extends NamedEntity {
     private Integer carbohydratesDemand;
 
     @Column(name = "fats_demnad")
-    private Integer fatsDemnad;
+    private Integer fatsDemand;
 
 
     public String getFirstName() {
@@ -90,11 +90,11 @@ public class User extends NamedEntity {
         this.carbohydratesDemand = carbohydratesDemand;
     }
 
-    public Integer getFatsDemnad() {
-        return fatsDemnad;
+    public Integer getFatsDemand() {
+        return fatsDemand;
     }
 
-    public void setFatsDemnad(Integer fatsDemnad) {
-        this.fatsDemnad = fatsDemnad;
+    public void setFatsDemand(Integer fatsDemnad) {
+        this.fatsDemand = fatsDemnad;
     }
 }

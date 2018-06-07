@@ -8,33 +8,41 @@
 
 <div class="row">
     <div class="col-md-10 col-md-offset-1" style="background-color: #34302d; padding: 20px">
-        <h3 style="color: whitesmoke">Twoje spożycie kalorii:</h3>
+        <h3 style="color: whitesmoke" th:text="'Twoje spożycie kalorii : ' + ${demand.calories} + ' kcal'">Twoje
+            spożycie kalorii:</h3>
         <div class="progress">
             <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
-                 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                60%
+                 th:aria-valuenow="${demand.caloriesPercent}" aria-valuemin="0" aria-valuemax="100"
+                 th:style="'width: ' + ${demand.caloriesPercent} + '%;'">
+                <span th:text="${demand.caloriesPercent} + '%'"/>
             </div>
         </div>
         <br>
-        <h3 style="color: whitesmoke"> Twoje spożycie białka:</h3>
+        <h3 style="color: whitesmoke" th:text="'Twoje spożycie białka : ' + ${demand.proteins} + ' g'"> Twoje spożycie
+            białka:</h3>
         <div class="progress">
             <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
-                 aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-                30%
+                 aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"
+                 th:style="'width: ' + ${demand.proteinsPercent} + '%;'">
+                <span th:text="${demand.proteinsPercent} + '%'"/>
             </div>
         </div>
-        <h3 style="color: whitesmoke"> Twoje spożycie węglowodanów:</h3>
+        <h3 style="color: whitesmoke" th:text="'Twoje spożycie węglowodanów : ' + ${demand.carbonhydrates} + ' g'">
+            Twoje spożycie węglowodanów:</h3>
         <div class="progress">
             <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
-                 aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                70%
+                 aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                 th:style="'width: ' + ${demand.carbonhydratesPercent} + '%;'">
+                <span th:text="${demand.carbonhydratesPercent} + '%'"/>
             </div>
         </div>
-        <h3 style="color: whitesmoke"> Twoje spożycie tłuszczów:</h3>
+        <h3 style="color: whitesmoke" th:text="'Twoje spożycie tłuszczów : ' + ${demand.fats} + ' g'"> Twoje spożycie
+            tłuszczów:</h3>
         <div class="progress">
             <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
-                 aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%;">
-                55%
+                 aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"
+                 th:style="'width: ' + ${demand.fatsPercent} + '%;'">
+                <span th:text="${demand.fatsPercent} + '%'"/>
             </div>
         </div>
 

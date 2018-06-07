@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'settings')}">
+
+<body>
+
+<h2 class="text-center">Zmiana ustawień dla użytkownika</h2>
+<h2 class="text-center" th:text="${user.name}"/>
+<br><br>
+<div class="col-md-4 col-md-offset-4">
+<form th:object="${user}" class="form-horizontal" id="add-product-form" method="post">
+    <div class="form-group has-feedback">
+        <input class="form-control" type="hidden" id="name" name="name" value="dmnk" />
+        <input th:replace="~{fragments/inputField :: input ('Imię', 'firstName', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Nazwisko', 'lastName', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Data urodzin', 'yearOfBirth', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Waga', 'weight', 'text')}"/>
+        <label>Zapotrzebownie na:</label>
+        <input th:replace="~{fragments/inputField :: input ('Kalorie', 'caloriesDemand', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Białka', 'proteinsDemand', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Węglowodany', 'carbohydratesDemand', 'text')}"/>
+        <input th:replace="~{fragments/inputField :: input ('Tłuszcze', 'fatsDemand', 'text')}"/>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" type="submit">
+                Aktualizuj
+            </button>
+        </div>
+    </div>
+</form>
+</div>
+
+<!--<div th:each="meal : ${meals}">-->
+<!--<h2><span class="label label-default" th:text="${meal.date}"></span>   <span class="label label-default" th:text="${meal.name}"></span></h2>-->
+<!--<table th:id="'products_' + ${meal.id}" class="table table-striped">-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>Nazwa</th>-->
+<!--<th>Kalorie</th>-->
+<!--<th>Białko</th>-->
+<!--<th>Węglowodany</th>-->
+<!--<th>Tłuszcze</th>-->
+<!--<th>Waga</th>-->
+<!--</tr>-->
+<!--</thead>-->
+
+<!--<tbody>-->
+<!--<tr th:each="product : ${meal.products}">-->
+<!--<td th:text="${product.product.name}"></td>-->
+<!--<td th:text="${product.product.calories}"></td>-->
+<!--<td th:text="${product.product.proteins}"></td>-->
+<!--<td th:text="${product.product.carbonhydrates}"></td>-->
+<!--<td th:text="${product.product.fats}"></td>-->
+<!--<td th:text="${product.quantity}"></td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+
+<!--</div>-->
+<!--&lt;!&ndash;<a th:href="@{meals/new}" class="btn btn-default">Dodaj posiłek</a>&ndash;&gt;-->
+
+
+</body>
+</html>

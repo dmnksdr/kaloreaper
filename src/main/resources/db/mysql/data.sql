@@ -800,8 +800,8 @@ INSERT INTO product(name,calories,proteins,fats,carbonhydrates) VALUES ("Żurek"
 
 
 INSERT INTO user_table(id, name) VALUES(1, 'root');
-INSERT INTO user_table (name, first_name, last_name, year_of_birth, weight, height, calories_demand, proteins_demand, carbohydrates_demand, fats_demnad) VALUES ( 'dmnk', 'Dominik', 'Sdr', '1990', '75', '182', '2500', '120', '100', '80');
-INSERT INTO user_table (name, first_name, last_name, year_of_birth, weight, height, calories_demand, proteins_demand, carbohydrates_demand, fats_demnad) VALUES ( 'art', 'Artur', 'Majdak', '1990', '75', '182', '2500', '120', '100', '80');
+INSERT INTO user_table (name, first_name, last_name, year_of_birth, weight, height, calories_demand, proteins_demand, carbohydrates_demand, fats_demnad) VALUES ( 'dmnk', 'Dominik', 'Sdr', '1990', '75', '182', '3000', '120', '440', '110');
+INSERT INTO user_table (name, first_name, last_name, year_of_birth, weight, height, calories_demand, proteins_demand, carbohydrates_demand, fats_demnad) VALUES ( 'art', 'Artur', 'Majdak', '1990', '75', '182', '2500', '120', '280', '80');
 
 
 INSERT INTO meal(name, user_id, date) VALUES('Śniadanie', 2, '2018-06-06');

@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-            .antMatchers("/meal**", "/hist**", "/home**").authenticated()
+            .antMatchers("/meal**", "/hist**", "/home**", "/settings**").authenticated()
             .and()
             .formLogin()
             .and()

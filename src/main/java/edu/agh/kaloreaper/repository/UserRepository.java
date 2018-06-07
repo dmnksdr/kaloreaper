@@ -18,7 +18,7 @@ public interface UserRepository extends Repository<User, Integer> {
     @Transactional(readOnly = true)
     User findById(@Param("id") Integer id);
 
-//    void save(User meal);
+    void save(User user);
 
     @Query("SELECT user FROM User user WHERE user.name =:name")
     @Transactional(readOnly = true)
